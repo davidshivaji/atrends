@@ -1,6 +1,7 @@
 import sys
 from datetime import date
 from pytrends.request import TrendReq
+import matplotlib.pyplot as plt
 import pandas as pd
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
@@ -22,7 +23,6 @@ pytrends.build_payload(all_keywords, timeframe=frame, geo='')
 df = pytrends.interest_over_time()
 df.head(20)
 
-import matplotlib.pyplot as plt
 plt.style.use('dark_background')
 plt.figure().patch.set_facecolor('#121212')
 plt.axes().set_facecolor('#080808')
