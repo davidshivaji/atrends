@@ -15,4 +15,4 @@ Use this to quickly access the [Google Trends API](https://trends.google.com/tre
 ![](https://i.imgur.com/JzzNAZU.png)
 
 ## Custom:
-Edit the category, timeframe, colors, lines, ...
+Edit the category, timeframe, colors, lines, in cli_trends.py
