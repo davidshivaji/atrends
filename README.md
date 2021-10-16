@@ -8,7 +8,7 @@ Use this to quickly access the [Google Trends API](https://trends.google.com/tre
 
 #### Run `python cli_trends.py` with any number of arguments
 
-## Example:
+## Example
 
 ### `$ python cli_trends.py flask django react`
 
