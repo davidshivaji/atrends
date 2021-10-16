@@ -10,7 +10,7 @@ Use this to quickly access the [Google Trends API](https://trends.google.com/tre
 
 ## Example
 
-### `$ python cli_trends.py flask django react`
+```$ python cli_trends.py flask django react```
 
 ![](https://i.imgur.com/JzzNAZU.png)
 
