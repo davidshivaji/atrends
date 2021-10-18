@@ -4,7 +4,7 @@ Use this to quickly access the [Google Trends API](https://trends.google.com/tre
 
 ## Installation
 ```bash
-pip install [atrends](https://pypi.org/project/atrends)
+pip install atrends
 ```
 
 ## Usage
