@@ -18,4 +18,4 @@ pip install atrends
 trends javascript python
 ```
 
-![](https://i.imgur.com/mZp2jOx.png)
+![Example Screenshot](https://i.imgur.com/fhwRTnG.png)
