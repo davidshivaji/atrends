@@ -1,37 +1,22 @@
 import sys
-from datetime import date
-from pytrends.request import TrendReq
-import matplotlib.pyplot as plt
+from atrends.config import DEFAULT_TIMEFRAME, DEFAULT_CATEGORY, DEFAULT_GEO
+from atrends.data_fetcher import GoogleTrendsFetcher
+from atrends.plotter import plot_interest_over_time
 
-pytrends = TrendReq(hl='en_US', tz=360)
+def main(keywords):
+    if not keywords:
+        print("Please provide at least one keyword.")
+        return
 
-# https://github.com/pat310/google-trends-api/wiki/Google-Trends-Categories
+    fetcher = GoogleTrendsFetcher()
+    data = fetcher.fetch_with_retries(keywords, timeframe=DEFAULT_TIMEFRAME, geo=DEFAULT_GEO, category=DEFAULT_CATEGORY)
 
-all_keywords = sys.argv[1:]
+    if data is None or data.empty:
+        print("Failed to fetch data from Google Trends. Please try again later or with different keywords.")
+        return
 
-today = date.today()
-frame = f'2004-01-01 {today.strftime("%Y-%m-%d")}'
+    plot_interest_over_time(data, keywords)
 
-# cat=31 = programming
-pytrends.build_payload(all_keywords, timeframe=frame, geo='')
-
-
-df = pytrends.interest_over_time()
-df.head(20)
-
-plt.style.use('dark_background')
-plt.figure().patch.set_facecolor('#121212')
-plt.axes().set_facecolor('#080808')
-linewidth = 1
-
-colors = ['orange', 'teal', 'crimson', 'magenta', 'skyblue']
-
-for i, x in enumerate(all_keywords):
-    plt.plot(df[x], color=colors[i], label=x, linewidth=linewidth)
-
-plt.legend()
-plt.grid(color='#303030')
-
-# wherever you run this from, it will save the image there.
-plt.savefig(f'{"_".join(x for x in all_keywords)}.png', dpi=120)
-plt.show()
+if __name__ == "__main__":
+    all_keywords = sys.argv[1:]
+    main(all_keywords)
